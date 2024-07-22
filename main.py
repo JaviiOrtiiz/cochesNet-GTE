@@ -255,7 +255,7 @@ def main():
     # csv to file withouth pandas. Replace all ñ with n
     #csv name is current_time
     # use utf-8 encoding
-    with open('csv/cochesnet-GTE-{}.csv'.format(getCurrentTime('filename')), 'w', encoding='utf-8') as f:
+    with open('csv/cochesnet-gte-{}.csv'.format(getCurrentTime('filename')), 'w', encoding='utf-8') as f:
         f.write('date;id;title;url;price;km;year;mainProvince;isProfessional;phone;transmissionTypeId\n')
         for i in range(len(csv['id'])):
             # If the car has GTE in the title, write it to the file
@@ -285,14 +285,14 @@ def main():
 
   
   # check if csv file has duplicates
-    with open('csv/cochesnet-GTE-{}.csv'.format(getCurrentTime('filename')), 'r', encoding='utf-8') as g:
+    with open('csv/cochesnet-gte-{}.csv'.format(getCurrentTime('filename')), 'r', encoding='utf-8') as g:
         lines = g.readlines()
         # if a line is duplicated, remove it
         lines = list(set(lines))
         g.close()
 
     # write the cleaned file. ensure the first line is the header
-    with open('csv/cochesnet-GTE-{}.csv'.format(getCurrentTime('filename')), 'w', encoding='utf-8') as h:
+    with open('csv/cochesnet-gte-{}.csv'.format(getCurrentTime('filename')), 'w', encoding='utf-8') as h:
         h.write('date;id;title;url;price;km;year;mainProvince;isProfessional;phone;transmissionTypeId\n')
         for line in lines[1:]:
             if line != 'date;id;title;url;price;km;year;mainProvince;isProfessional;phone;transmissionTypeId\n':

@@ -1,27 +1,24 @@
 #!/bin/bash
 
 # Navigate to the directory containing your repository
-cd /home/orangepi
+cd /home/orangepi/cochesNet-gte
 
 # Pull the latest changes from the Git repository
-gh repo clone JaviiOrtiiz/cochesNet-GTE
-
-# Navigate to the repository
-cd cochesNet-GTE
+git pull
 
 # Stop and remove the old container if it exists
-if [ "$(docker ps -q -f name=cochesnet-GTE)" ]; then
-    docker stop cochesnet-GTE
-    docker rm cochesnet-GTE
+if [ "$(docker ps -q -f name=cochesnet-gte)" ]; then
+    docker stop cochesnet-gte
+    docker rm cochesnet-gte
 fi
 
 # Remove the old Docker image if it exists
-if [ "$(docker images -q cochesnet-GTE)" ]; then
-    docker rmi cochesnet-GTE
+if [ "$(docker images -q cochesnet-gte)" ]; then
+    docker rmi cochesnet-gte
 fi
 
 # Build the Docker image
-docker build -t cochesnet-GTE .
+docker build -t cochesnet-gte .
 
 # Run the run.sh script
 sh run.sh
